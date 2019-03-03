@@ -1,0 +1,23 @@
+##
+##  common editor configuration
+##  
+##  SPDX-License-Identifier: GPL-2.0-only
+##  Copyright (C) 2018, angel
+##
+
+root = true
+
+[*]
+charset = utf-8
+
+end_of_line = lf
+insert_final_newline = true
+
+indent_style = space
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+[{Makefile,*.mk}]
+indent_style = tab

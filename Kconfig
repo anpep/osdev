@@ -1,0 +1,34 @@
+##
+##  kernel configuration file
+##  see doc/build/kconfig-language.txt for details on the syntax of this file
+##
+##  SPDX-License-Identifier: GPL-2.0-only
+##  Copyright (C) 2018, angel
+##
+
+mainmenu "Kernel Configuration"
+
+config BUILD_VERBOSE
+  bool "Verbose build"
+  default "n"
+  help
+    If set to "y", Makefile commands will be printed back to the terminal as
+    they are executed.
+
+config CORE_DEBUG
+  bool "Debugging symbols"
+  default "n"
+  help
+    If set to "y", the kernel binary will include debugging information.
+
+config CORE_EXTRA_CFLAGS
+  string "Additional compiler flags"
+  default ""
+  help
+    Specifies additional compilation flags for the kernel.
+
+config TOOLCHAIN_PREFIX
+  string "Toolchain prefix"
+  help
+    Specifies the prefix for build tools, if the build system does not
+    automatically detect it with accuracy.

@@ -1,0 +1,32 @@
+##
+##  file patterns not tracked by git
+##  
+##  SPDX-License-Identifier: GPL-2.0-only
+##  Copyright (C) 2018, angel
+##
+
+# python cache
+__pycache__/
+
+# GDB/PEDA
+.gdb_history
+*-session-*
+
+# Temporary/backup files
+*.bak
+*~
+
+# generated configuration files
+/.config
+/*.config
+
+# private scripts
+priv/
+
+# binary and object files
+*.o
+*.elf
+*.bin
+*.dat
+*.img
+*.d

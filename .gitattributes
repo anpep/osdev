@@ -1,0 +1,9 @@
+##
+##  git attributes
+##  
+##  SPDX-License-Identifier: GPL-2.0-only
+##  Copyright (C) 2018, angel
+##
+
+# ensure all files have unix line endings
+* text=auto eol=lf
