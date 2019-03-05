@@ -12,6 +12,7 @@ SOBJS = $(patsubst %.asm,%.o,$(shell find . -type f -name "*.asm"))
 
 CFLAGS = -m32 -std=c99 -nostdlib -ffreestanding \
          -mno-mmx -mno-sse -mno-sse2 -masm=intel \
+				 -fno-pic \
          -Wall -Wextra \
          -I./include
          $(CORE_EXTRA_CFLAGS)

@@ -9,36 +9,32 @@ ENTRY(start)
 
 SECTIONS
 {
-  . = 1M;
+  . = 0xc0100000;
   __kernel_start = .;
 
-  .boot BLOCK(4K) : ALIGN(4K)
-  {
-    *(.boot)
-  }
-
-  .text BLOCK(4K) : ALIGN(4K)
+  .text ALIGN (4K) : AT (ADDR (.text) - 0xc0000000)
   {
     __text_start = .;
+    *(.boot)
     *(.text)
     __text_end = .;
   }
 
-  .rodata BLOCK(4K) : ALIGN(4K)
+  .rodata ALIGN (4K) : AT (ADDR (.rodata) - 0xc0000000)
   {
     __rodata_start = .;
     *(.rodata)
     __rodata_end = .;
   }
 
-  .data BLOCK(4K) : ALIGN(4K)
+  .data ALIGN (4K) : AT (ADDR (.data) - 0xc0000000)
   {
     __data_start = .;
     *(.data)
     __data_end = .;
   }
 
-  .bss BLOCK(4K) : ALIGN(4K)
+  .bss ALIGN (4K) : AT (ADDR (.bss) - 0xc0000000)
   {
     __bss_start = .;
     *(.bss)
