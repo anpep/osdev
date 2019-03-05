@@ -12,37 +12,37 @@ SECTIONS
   . = 1M;
   __kernel_start = .;
 
-  .boot :
+  .boot BLOCK(4K) : ALIGN(4K)
   {
-    *(.multiboot)
+    *(.boot)
   }
 
-  .text :
+  .text BLOCK(4K) : ALIGN(4K)
   {
     __text_start = .;
     *(.text)
     __text_end = .;
   }
 
-  .data :
+  .rodata BLOCK(4K) : ALIGN(4K)
+  {
+    __rodata_start = .;
+    *(.rodata)
+    __rodata_end = .;
+  }
+
+  .data BLOCK(4K) : ALIGN(4K)
   {
     __data_start = .;
     *(.data)
     __data_end = .;
   }
 
-  .bss :
+  .bss BLOCK(4K) : ALIGN(4K)
   {
     __bss_start = .;
     *(.bss)
     __bss_end = .;
-  }
-
-  .rodata :
-  {
-    __rodata_start = .;
-    *(.rodata)
-    __rodata_end = .;
   }
 
   __kernel_end = .;

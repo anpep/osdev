@@ -8,13 +8,15 @@
 # python cache
 __pycache__/
 
-# GDB/PEDA
+# debugging
 .gdb_history
 *-session-*
+*_dbg.ini
 
-# Temporary/backup files
+# Temporary/backup/lock files
 *.bak
 *~
+*.lock
 
 # generated configuration files
 /.config
@@ -30,3 +32,4 @@ priv/
 *.dat
 *.img
 *.d
+

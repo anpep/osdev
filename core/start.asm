@@ -15,7 +15,9 @@ MB_HEADER_TAG_END    equ 0           ; required end tag
 ;;
 ;;  multiboot header
 ;;
-section .multiboot
+section .boot
+  align 4
+
   hdr:
     magic:        dd MB2_HEADER_MAGIC
     architecture: dd MB_ARCHITECTURE_I386
@@ -35,9 +37,9 @@ section .multiboot
 ;;  kernel stub
 ;;
 section .text
-  bits     32
-  global   start
-  extern   main
+  bits    32
+  global  start:function (start.end - start)
+  extern  main
 
   start:  cli
           
@@ -45,22 +47,18 @@ section .text
           push  0                ; reset EFLAGS
           popf
 
-          xor   cx,  cx
-          mov   ds,  cx          ; initialize data segment registers with the
-          mov   es,  cx          ;   null selector
-          mov   fs,  cx
-          mov   gs,  cx
-
           push  ebx              ; bootloader data struct
           push  eax              ; bootloader magic value
           call  main
 
   .loop:  hlt
           jmp   .loop
+  .end:
 
 ;;
 ;;  stack layout
 ;;
 section .bss
+  align 16
   stack_start: resb 0x4000
   stack_end:
